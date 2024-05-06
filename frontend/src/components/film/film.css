@@ -1,0 +1,105 @@
+.film-container {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.film-container:hover {
+  transform: scale(1.05);
+
+  .play-icon {
+    transition: visibility 0.3s ease;
+    visibility: visible;
+  }  
+}
+.film-image {
+  position: relative;
+  height: 280px;
+  width: 200px;
+  background: url('../../images/fantastic_planet.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  
+
+  transition: 0.3s ease;
+}
+
+.film-container:hover {
+  .film-image {
+    opacity: 0.6; /* Darken the image on hover */
+  }
+}
+
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  visibility: hidden;
+  cursor: pointer;
+}
+
+.desc-film-cont {
+  height: 100px;
+  width: 200px;
+  background-color: #181818;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+p {
+  display: inline-block;
+  color: white;
+}
+
+.title-genres {
+  margin-left: 10px;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.info {
+  margin-left: 10px;
+  font-size: 0.9rem;
+
+  display: flex;
+  align-items: center;
+}
+
+.rating {
+  margin-left: 3px;
+  color: orange;
+}
+
+.year {
+  margin-left: 10px;
+}
+
+.fav-icon {
+  margin-left: 20px;
+  margin-right: 5px;
+}
+
+.watched-icon {
+  margin-right: 5px;
+}
+
+span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

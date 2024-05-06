@@ -1,0 +1,13 @@
+:root {
+  --color-green: #7EF5B1;
+}
+
+.page-container {
+  display: inline-block;
+  background-color:#282624;
+  vertical-align: top;
+  height: 200vh;
+  width: calc(100% - 260px);
+
+  border-top-left-radius: 10px;
+}

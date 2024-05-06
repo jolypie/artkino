@@ -1,0 +1,16 @@
+.moviePageContent {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  grid-template-rows: 0.1fr 1fr 1.5fr;
+}
+
+.description {
+  width: 40rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  padding: 0rem;
+}
+
+
+

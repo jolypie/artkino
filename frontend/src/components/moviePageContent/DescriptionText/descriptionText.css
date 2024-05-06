@@ -1,0 +1,12 @@
+.moviePageContent .desc_text_container {
+  grid-column: 3 / 1;
+  padding: 2rem 2rem 0rem 2rem;
+}
+
+.moviePageContent .desc_text {
+  padding: 1rem;
+  background-color: #141414;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  color: white;
+}

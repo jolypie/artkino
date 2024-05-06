@@ -1,0 +1,62 @@
+.searchBar {
+  display: inline-block;
+
+  width: 300px;
+  height: 600px;
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.user-pref {
+  height: 12rem;
+  width: 13rem;
+  background-color: #181818;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  border-radius: 10px;
+}
+
+.search {
+  height: 8rem;
+  width: 13rem;
+}
+
+.sort {
+  height: 8rem;
+  width: 13rem;
+}
+
+
+.searchBar ul {
+  list-style-type:none;
+  padding: 0;
+}
+
+.searchBar ul li {
+  margin: 1rem;
+}
+
+.search ul li {
+  margin-left: 1.2rem
+}
+
+.searchBar ul li a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+}
+
+.user-pref .fav-icon,
+.user-pref .watched-icon,
+.user-pref .watch-later-icon {
+  display: inline-block;
+  margin: 0;
+  margin-right: 7px;
+}
+

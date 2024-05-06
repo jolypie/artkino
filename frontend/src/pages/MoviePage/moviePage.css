@@ -1,0 +1,16 @@
+.movie-page .page-container {
+  display: inline-block;
+  background-color:#181818;
+  vertical-align: top;
+  height: 300vh;
+  width: 100%;
+
+  border-top-left-radius: 0px;
+}
+
+.movie-container {
+  background-color:#222222;
+  margin: 0 10rem;
+  height: 300vh;
+  }
+  

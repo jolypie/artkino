@@ -1,0 +1,98 @@
+:root {
+  --color-gray: #181818;
+  --color-orange: #FF4E00;
+  --color-dark-orange: #a03000;
+}
+
+.sidebar-container {
+  height: 200vh;
+  width: 260px;
+  background-color: var(--color-gray);
+
+  display: inline-block;
+  vertical-align: top;
+}
+
+.sidebar-container p {
+  display: block;
+  color: var(--color-dark-orange);
+  font-weight: 500;
+  margin-left: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+
+  margin: 1rem 0 1rem 0;
+}
+
+.sidebar-container ul {
+  list-style-type: none;
+  padding: 1rem;
+
+  background-color: #222222;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  border-radius: 10px;
+
+  padding: 0
+}
+
+.sidebar-container ul li {
+  padding: 1rem
+}
+
+.sidebar-container ul li a{
+  text-decoration: none;
+  color: white;
+  font-size: 1.3rem;
+}
+
+.category-icon-cont {
+  display: flex;
+}
+
+.icon {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.categories {
+  padding-top: 2rem;
+}
+
+
+.genres li:first-child,
+.categories li:first-child {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.genres li:last-child,
+.categories li:last-child {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.genres a {
+  margin-left: 1rem;
+}
+
+.darkRow {
+  background-color: #222222;
+}
+
+.darkRow:hover {
+  background-color: #282828;
+  cursor: pointer;
+}
+
+.lightRow {
+  background-color: #252525; 
+}
+
+.lightRow:hover {
+  background-color: #282828;
+  cursor: pointer;
+}

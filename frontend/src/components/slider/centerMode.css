@@ -1,0 +1,46 @@
+styles.css
+.slider-container {
+  max-width: auto; /* adjust the width of the carousel */
+}
+
+.slick-slide {
+  height: 800px; /* set a fixed height for each slide */
+}
+
+.slider-container .slick-slide {
+  margin: 10px; /* add some margin between slides */
+}
+
+.slider-container .slick-slide img {
+  width: 100%; /* make images full-width */
+  height: 600px; /* adjust the height of the images */
+  object-fit: cover; /* make images cover the entire slide */
+  border-radius: 10px; /* add some border radius to the images */
+  max-width: 1000px;
+}
+
+
+.slider-container .slick-dots li button:before {
+  font-size: 12px; /* adjust the size of the dot icons */
+  color: #fff; /* change the color of the dot icons */
+}
+
+.slider-container .slick-prev, .slider-container .slick-next {
+  top: 50%; /* move arrows to the middle of the slides */
+  transform: translateY(-50%);
+  z-index: 1; /* make sure arrows are on top of the images */
+}
+
+.slider-container .slick-prev {
+  left: 20px; /* adjust the position of the previous arrow */
+  top: 50%;
+}
+
+.slider-container .slick-next {
+  right: 20px; /* adjust the position of the next arrow */
+}
+
+.slider-container .slick-prev:before, .slider-container .slick-next:before {
+  font-size: 36px; /* adjust the size of the arrow icons */
+  color: #fff; /* change the color of the arrow icons */
+}
