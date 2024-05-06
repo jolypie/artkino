@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './navbar.css'
+import './navbar.scss'
 import logoImage from '../../images/logo.svg';
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
@@ -10,7 +10,7 @@ import { deepPurple } from '@mui/material/colors';
 function Navbar() {
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isUserLoggedIn = true; 
+  const isUserLoggedIn = false; 
 
   const handleMouseEnter = () => {
     setIsMenuOpen(true);
@@ -44,7 +44,7 @@ function Navbar() {
               )}
             </li>
           ) : (
-            <CustomLink to="/login">SIGN IN</CustomLink>
+            <CustomLink to="/login" className="sign_in_navbar">SIGN UP</CustomLink>
           )}
 
           {/*<span id="span">
