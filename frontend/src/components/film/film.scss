@@ -1,3 +1,6 @@
+.film-item {
+  margin: 2rem;
+}
 .film-container {
   display: inline-block;
   transition: transform 0.3s ease;
@@ -15,7 +18,7 @@
   position: relative;
   height: 280px;
   width: 200px;
-  background: url('../../images/fantastic_planet.jpg');
+  background: url('../../images/no_image.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -25,6 +28,11 @@
   
 
   transition: 0.3s ease;
+}
+
+.movie-poster {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .film-container:hover {
@@ -44,7 +52,7 @@
 }
 
 .desc-film-cont {
-  height: 100px;
+  height: 150px;
   width: 200px;
   background-color: #181818;
 
@@ -63,10 +71,11 @@ p {
 
 .title-genres {
   margin-left: 10px;
+  margin-top: 1rem;
 }
 
 .title {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
   margin-right: 5px;
   cursor: pointer;
@@ -102,4 +111,10 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.genres {
+  font-size: 0.8rem;
+  color: rgb(172, 172, 172);
+  margin-top: 10px;
 }

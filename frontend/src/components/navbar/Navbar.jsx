@@ -1,15 +1,14 @@
-import React, { useState } from 'react'
-import './navbar.scss'
-import logoImage from '../../images/logo.svg';
-import { Link, useMatch, useResolvedPath } from "react-router-dom";
-import SearchIcon from '@mui/icons-material/Search';
-import PersonIcon from '@mui/icons-material/Person';
+import React, { useState } from 'react';
+import './navbar.scss';
+import { Link, useMatch, useResolvedPath, useNavigate } from "react-router-dom";
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { Avatar } from '@mui/material';
 import { deepPurple } from '@mui/material/colors';
 
 function Navbar() {
-  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
   const isUserLoggedIn = false; 
 
   const handleMouseEnter = () => {
@@ -20,14 +19,36 @@ function Navbar() {
     setIsMenuOpen(false);
   };
 
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      navigate(`/search?query=${searchQuery}`);
+    }
+  };
+
+  const handleSearchKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <div>
       <nav>
         <ul className="navbar">
-          {/* <Link to="/"><img src={logoImage} className="logo" alt="Logo" /></Link> */}
           <Link to="/" className='logo'>ARTKINO</Link>
-          <li>
-            <input type="search" placeholder="Search" />
+          <li className="search-container">
+            <input
+              type="search"
+              placeholder="Search"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              onKeyPress={handleSearchKeyPress}
+            />
+            <SearchOutlinedIcon className='search-icon' onClick={handleSearch} sx={{color: 'black'}} />
           </li>
           {isUserLoggedIn ? (
             <li className="user" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
@@ -37,8 +58,8 @@ function Navbar() {
                 <div className='userMenu'>
                   <ul>
                     <li><a href="/profile">My Profile</a></li>
-                    <li><a href="/">Subscription</a></li>
                     <li><a href="/">Settings</a></li>
+                    <li><a href="/">Log Out</a></li>
                   </ul>
                 </div>
               )}
@@ -46,10 +67,6 @@ function Navbar() {
           ) : (
             <CustomLink to="/login" className="sign_in_navbar">SIGN UP</CustomLink>
           )}
-
-          {/*<span id="span">
-            <SearchIcon sx={{ color: '#fff' }} />
-          </span> */}
         </ul>
       </nav>
     </div>
@@ -69,5 +86,4 @@ function CustomLink({ to, children, ...props }) {
   )
 }
 
-
-export default Navbar
+export default Navbar;

@@ -1,6 +1,9 @@
 .moviePageContent .desc_text_container {
   grid-column: 3 / 1;
   padding: 2rem 2rem 0rem 2rem;
+
+  display: flex;
+  justify-content: center
 }
 
 .moviePageContent .desc_text {

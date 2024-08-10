@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../../components/navbar/Navbar';
+import { Link, useParams } from 'react-router-dom';
 import Film from '../../components/film/Film';
+import Navbar from '../../components/navbar/Navbar';
 import Sidebar from '../../components/sidebar/Sidebar';
-import './films.css';
+import '../Films/films.css';
 import { API_KEY } from '../../api/api';
-import { Link } from 'react-router-dom';
 
-function Films() {
+function GenrePage() {
+  const { genreId } = useParams(); 
   const [movieList, setMovieList] = useState([]);
   const [genreList, setGenreList] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const getMovies = async () => {
+  const getMoviesByGenre = async (genreId) => {
     try {
-      const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&page=1&sort_by=vote_count.desc&watch_region=US`);
+      const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=${genreId}`);
       const json = await response.json();
       setMovieList(json.results);
+      setLoading(false);
     } catch (error) {
       setError(error);
+      setLoading(false);
     }
   };
 
@@ -32,9 +36,11 @@ function Films() {
   };
 
   useEffect(() => {
-    getMovies();
+    if (genreId) {
+      getMoviesByGenre(genreId); 
+    }
     getGenres();
-  }, []);
+  }, [genreId]);
 
   const getGenreNames = (genreIds) => {
     return genreIds.map(id => {
@@ -50,17 +56,21 @@ function Films() {
   return (
     <div>
       <Navbar />
-      <Sidebar />
+      <Sidebar genres={genreList} />
       <div className='page-container'>
         <div className="page">
           <div className='films'>
-            <div className="gridFilms">
-              {movieList.map((movie) => (
-                <Link to={`/film/${movie.id}`} key={movie.id}>
-                  <Film movie={movie} getGenreNames={getGenreNames} />
-                </Link>
-              ))}
-            </div>
+            {loading ? (
+              <p>Loading movies...</p>
+            ) : (
+              <div className="gridFilms">
+                {movieList.map((movie) => (
+                  <Link to={`/film/${movie.id}`} key={movie.id}>
+                    <Film movie={movie} getGenreNames={getGenreNames} />
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -68,4 +78,4 @@ function Films() {
   );
 }
 
-export default Films;
+export default GenrePage;

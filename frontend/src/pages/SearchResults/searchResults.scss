@@ -39,6 +39,7 @@
   padding: 1rem;
 }
 
+/* Responsive adjustments */
 @media (max-width: 1200px) {
   .gridFilms {
     grid-template-columns: repeat(3, 1fr);

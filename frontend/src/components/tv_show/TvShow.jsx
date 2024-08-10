@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './film.scss';
+import '../film/film.scss';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import { green, grey, orange, red } from '@mui/material/colors';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
@@ -12,7 +12,7 @@ import WatchLaterIcon from '@mui/icons-material/WatchLater';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import { Link } from 'react-router-dom';
 
-function Film({ movie, getGenreNames }) {
+function TvShow({ tv, getGenreNames }) {
   const [isWatched, setIsWatched] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [isWatchLater, setIsWatchLater] = useState(false);
@@ -31,21 +31,21 @@ function Film({ movie, getGenreNames }) {
 
   return (
     <div className='film-item'>
-      <Link to={`/film/${movie.id}`} className='film-link'>
+      <Link to={`/series/${tv.id}`} className='film-link'>
       <div className='film-container'>
         <div className='film-image'>
-            <img className='movie-poster' src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} />
+            <img className='movie-poster' src={`https://image.tmdb.org/t/p/w200${tv.poster_path}`} />
             <PlayCircleOutlineIcon className='play-icon' sx={{ fontSize: 100, color: 'white' }} />
           </div>
               <div className="desc-film-cont">
             <div className='title-genres'>
-              <p className='title'>{movie.title}</p>
-              <p className='genres'>{getGenreNames(movie.genre_ids)}</p>
+              <p className='title'>{tv.name}</p>
+              <p className='genres'>{getGenreNames(tv.genre_ids)}</p>
             </div>
             <div className="info">
               <StarBorderOutlinedIcon sx={{ color: orange[500], fontSize: 22 }} />
-              <p className="rating">{movie.vote_average.toFixed(1)}</p>
-              <p className="year">{new Date(movie.release_date).getFullYear()}</p>
+              <p className="rating">{tv.vote_average.toFixed(1)}</p>
+              <p className="year">{new Date(tv.first_air_date).getFullYear()}</p>
               <span onClick={handleIsFavoriteClick} className='fav-icon'>
                 {isFavorite ? <FavoriteIcon sx={{ color: red[500], fontSize: 20 }} /> : <FavoriteBorderIcon sx={{ color: grey[500], fontSize: 20 }} />}
               </span>
@@ -66,4 +66,4 @@ function Film({ movie, getGenreNames }) {
   );
 }
 
-export default Film;
+export default TvShow;

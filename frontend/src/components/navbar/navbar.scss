@@ -126,3 +126,23 @@ input[type="search"] {
   opacity: 1;
 }
 
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-container input[type="search"] {
+  padding-right: 2.5rem; 
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px; 
+  font-size: 1.5rem; 
+  color: #fff; 
+  cursor: pointer; 
+  z-index: 100;
+}
+
+

@@ -1,23 +1,19 @@
 import React, { useState } from 'react';
-import Navbar from '../../components/navbar/Navbar';
 import { Link } from 'react-router-dom';
 import './signIn.scss';
 
 function SignIn() {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isRegister, setIsRegister] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isRegister) {
-      // регистрация
-      console.log('Registering user:', username, password);
-      // отправка запроса на регистрацию на сервер
+      console.log('Registering user:', username, email, password);
     } else {
-      // вход в систему
-      console.log('Logging in user:', username, password);
-      // отправка запроса на вход в систему на сервер
+      console.log('Logging in user:', email, password);
     }
   };
 
@@ -36,13 +32,24 @@ function SignIn() {
           </div>
           <div className="container">
             <form onSubmit={handleSubmit}>
-              <h1>{isRegister ? 'Sign Up' : 'Sign In'}</h1>
-              <input type="email" placeholder="E-mail" value={username} onChange={(e) => setUsername(e.target.value)} />
+              <h1>{isRegister ? 'Register' : 'Sign In'}</h1>
+              
+              {isRegister && (
+                <input
+                  type="username"
+                  placeholder="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              )}
+              
+              <input type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
               <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              
               <button type="submit" className="loginButton">{isRegister ? 'Sign Up' : 'Sign In'}</button>
               <span>
                 {isRegister ? 'Already have an account? ' : 'New to Artkino? '}
-                <b onClick={() => setIsRegister(!isRegister)}>{isRegister ? 'Sign In' : 'Sign Up'}</b>
+                <b onClick={() => setIsRegister(!isRegister)}>{isRegister ? 'Sign In' : 'Register'}</b>
               </span>
             </form>
           </div>

@@ -1,28 +1,36 @@
-import React from 'react'
+import React from 'react';
 import './descInfo.css';
 
-function DescInfo() {
-  const description = [
-    'Title',
-    'Year',
-    'Rating',
-    'Countries',
-    'Genres',
-    'Director',
-    'Cast'
-  ];
+function DescInfo({ movie }) { 
+  const { title, release_date, vote_average, countries, genres, director, cast } = movie;
 
   return (
     <div className="descInfo">
-    <ul>
-        {description.map((description, index) => (
-          <li key={index} className={index % 2 === 0 ? 'info-darkRow' : 'info-lightRow'}>
-            <p>{description} <span>Title and something</span></p> {/*здесь будет потом переменная*/}
-          </li>
-        ))}
+      <ul>
+        <li className='info-darkRow'>
+          <p>Title <span>{title}</span></p>
+        </li>
+        <li className='info-lightRow'>
+          <p>Year <span>{new Date(release_date).getFullYear()}</span></p>
+        </li>
+        <li className='info-darkRow'>
+          <p>Rating <span>{vote_average.toFixed(1)}</span></p>
+        </li>
+        <li className='info-lightRow'>
+          <p>Countries <span>{countries.join(', ')}</span></p>
+        </li>
+        <li className='info-darkRow'>
+          <p>Genres <span>{genres.join(', ')}</span></p>
+        </li>
+        <li className='info-lightRow'>
+          <p>Director <span>{director}</span></p>
+        </li>
+        <li className='info-darkRow'>
+          <p>Cast <span>{cast.join(', ')}</span></p>
+        </li>
       </ul>
-  </div>
-  )
+    </div>
+  );
 }
 
-export default DescInfo
+export default DescInfo;
