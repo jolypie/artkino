@@ -9,7 +9,7 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
-  const isUserLoggedIn = false; 
+  const isUserLoggedIn = !!localStorage.getItem("token"); // Проверка на наличие токена в localStorage
 
   const handleMouseEnter = () => {
     setIsMenuOpen(true);
@@ -33,6 +33,12 @@ function Navbar() {
     if (e.key === 'Enter') {
       handleSearch();
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Удаление токена из localStorage
+    navigate("/login"); // Перенаправление на страницу входа
+    window.location.reload(); // Перезагрузка страницы, чтобы обновить состояние
   };
 
   return (
@@ -59,7 +65,7 @@ function Navbar() {
                   <ul>
                     <li><a href="/profile">My Profile</a></li>
                     <li><a href="/">Settings</a></li>
-                    <li><a href="/">Log Out</a></li>
+                    <li><a onClick={handleLogout}>Log Out</a></li> {/* Добавлен обработчик выхода */}
                   </ul>
                 </div>
               )}
@@ -70,7 +76,7 @@ function Navbar() {
         </ul>
       </nav>
     </div>
-  )
+  );
 }
 
 function CustomLink({ to, children, ...props }) {
@@ -83,7 +89,7 @@ function CustomLink({ to, children, ...props }) {
         {children}
       </Link>
     </li>
-  )
+  );
 }
 
 export default Navbar;

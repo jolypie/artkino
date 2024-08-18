@@ -1,22 +1,18 @@
 require('dotenv').config()
 
 const express = require('express')
-const mongoose = require('mongoose')
-const userRoutes = require('./routes/user')
-
-// express app
 const app = express()
+const cors = require('cors')
+const mongoose = require('mongoose')
+const userRoutes = require('./routes/users')
+const authRoutes = require('./routes/auth')
 
 // middleware
 app.use(express.json())
-
-app.use((req, res, next) => {
-  console.log(req.path, req.method)
-  next()
-})
-
-// routes
-app.use('/api/user', userRoutes)
+app.use(cors({
+  origin: 'http://localhost:3000', // разрешить запросы с фронтенда
+  credentials: true, // если нужно передавать куки
+}));
 
 // connect to db
 mongoose.connect(process.env.MONGO_URI)
@@ -28,4 +24,17 @@ mongoose.connect(process.env.MONGO_URI)
   })
   .catch((error) => {
     console.log(error)
+    console.log('Failed to connect to db')
   })
+
+  // routes
+  app.use('/api/users', userRoutes)
+  app.use('/api/auth', authRoutes)
+
+  app.use((req, res, next) => {
+    console.log(req.path, req.method)
+    next()
+  })
+  
+
+  

@@ -30,6 +30,9 @@
   "@testing-library/user-event": "^13.5.0",
   
     
+  "axios": "^1.7.3",
+  
+    
   "node-fetch": "^3.3.2",
   
     

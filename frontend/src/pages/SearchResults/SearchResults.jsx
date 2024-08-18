@@ -33,8 +33,6 @@ function SearchResults() {
   };
 
   return (
-
-
     <div>
       <Navbar />
       <Sidebar />
@@ -56,7 +54,6 @@ function SearchResults() {
         </div>
       </div>
     </div>
-
   );
 }
 

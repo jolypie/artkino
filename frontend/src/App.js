@@ -16,15 +16,22 @@ import UserPage from "./pages/UserPage/UserPage";
 function App() {
   const [genres, setGenres] = useState([]);
 
-  const getGenres = () => {
-    fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`)
-      .then(res => res.json())
-      .then(json => setGenres(json.genres));
+  const getGenres = async () => {
+    try {
+      const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`);
+      const json = await response.json();
+      setGenres(json.genres);
+    } catch (error) {
+      console.error('Failed to fetch genres:', error);
+    }
   };
+  
 
   useEffect(() => {
     getGenres();
   }, []);
+
+  const user = localStorage.getItem('token');
 
   return (
     <div>
