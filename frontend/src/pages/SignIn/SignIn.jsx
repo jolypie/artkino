@@ -8,47 +8,37 @@ function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isRegister, setIsRegister] = useState(false);
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        let url;
-        let response;
+      let url;
+      let response;
 
-        if (isRegister) {
-            url = "http://localhost:5500/api/users/register";
-            response = await axios.post(url, { username, email, password });
-        } else {
-            url = "http://localhost:5500/api/auth/login";
-            response = await axios.post(url, { email, password });
-        }
+      if (isRegister) {
+        url = "http://localhost:5500/api/users/register";
+        response = await axios.post(url, { username, email, password });
+      } else {
+        url = "http://localhost:5500/api/auth/login";
+        response = await axios.post(url, { email, password });
+      }
 
-        // Проверяем, есть ли токен в localStorage
-        if (localStorage.getItem('token')) {
-            setIsUserLoggedIn(true);
-        }
+      if (response.data.data) {  
+        localStorage.setItem('token', response.data.data);
+        navigate(isRegister ? "/profile" : "/");
+      }
 
-        // После успешного запроса, сохраните токен в localStorage и перенаправьте
-        localStorage.setItem('token', response.data.token);
-        
-        if (isRegister) {
-            navigate("/profile"); // Если регистрация, перенаправляем на страницу профиля
-        } else {
-            navigate("/"); // Если вход, перенаправляем на главную страницу
-        }
-
-        console.log(response.data.message);
+      console.log(response.data.message);
     } catch (error) {
-        if (error.response && error.response.status >= 400 && error.response.status <= 500) {
-            setError(error.response.data.message);
-        } else {
-            setError("Something went wrong. Please try again.");
-        }
+      if (error.response && error.response.status >= 400 && error.response.status <= 500) {
+        setError(error.response.data.message);
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
     }
-};
+  };
 
   return (
     <div className='signup_container'>
@@ -69,7 +59,7 @@ function SignIn() {
 
               {isRegister && (
                 <input
-                  type="text" // тип должен быть "text", а не "username"
+                  type="text"
                   placeholder="Username"
                   value={username}
                   required
@@ -91,7 +81,6 @@ function SignIn() {
                 required
                 onChange={(e) => setPassword(e.target.value)} />
 
-              {/* Исправление отображения ошибки */}
               {error && <p className="error">{error}</p>}
 
               <button type="submit" className="loginButton">{isRegister ? 'Sign Up' : 'Sign In'}</button>

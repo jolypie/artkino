@@ -10,8 +10,8 @@ const authRoutes = require('./routes/auth')
 // middleware
 app.use(express.json())
 app.use(cors({
-  origin: 'http://localhost:3000', // разрешить запросы с фронтенда
-  credentials: true, // если нужно передавать куки
+  origin: 'http://localhost:3000', 
+  credentials: true, 
 }));
 
 // connect to db

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './navbar.scss';
 import { Link, useMatch, useResolvedPath, useNavigate } from "react-router-dom";
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
@@ -9,7 +9,8 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
-  const isUserLoggedIn = !!localStorage.getItem("token"); // Проверка на наличие токена в localStorage
+  const isUserLoggedIn = !!localStorage.getItem("token");
+  const [username, setUsername] = useState('');
 
   const handleMouseEnter = () => {
     setIsMenuOpen(true);
@@ -36,11 +37,34 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); // Удаление токена из localStorage
-    navigate("/login"); // Перенаправление на страницу входа
-    window.location.reload(); // Перезагрузка страницы, чтобы обновить состояние
+    localStorage.removeItem("token"); 
+    navigate("/login"); 
+    window.location.reload(); 
   };
 
+  useEffect(() => {
+    const fetchUsername = async () => {
+      try {
+        const response = await fetch('http://localhost:5500/api/users/username', {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setUsername(data.username);
+        } else {
+          console.error('Failed to fetch username');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+
+    fetchUsername();
+  }, []);
+
+  const firstLetter = username.charAt(0).toUpperCase();
   return (
     <div>
       <nav>
@@ -58,14 +82,16 @@ function Navbar() {
           </li>
           {isUserLoggedIn ? (
             <li className="user" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-              <p className='userNAME'>USER</p> 
-              <Avatar sx={{ bgcolor: deepPurple[500] }} className='Avatar'>U</Avatar>
+              <p className='userNAME'>{username}</p> 
+              <Avatar sx={{ bgcolor: deepPurple[500] }} className='Avatar'>
+                {firstLetter}
+              </Avatar>
               {isMenuOpen && (
                 <div className='userMenu'>
                   <ul>
                     <li><a href="/profile">My Profile</a></li>
                     <li><a href="/">Settings</a></li>
-                    <li><a onClick={handleLogout}>Log Out</a></li> {/* Добавлен обработчик выхода */}
+                    <li><a onClick={handleLogout}>Log Out</a></li>
                   </ul>
                 </div>
               )}

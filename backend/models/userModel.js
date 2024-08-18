@@ -32,11 +32,17 @@ const validate = (data) => {
   const schema = Joi.object({
     username: Joi.string().required().label('Username'),
     email: Joi.string().email().required().label('Email'),
-    password: passwordComplexity().required().label('Password')
+    password: passwordComplexity({
+      min: 8,
+      max: 40,
+      lowerCase: 0,
+      upperCase: 0,
+      numeric: 0,
+      symbol: 0,
+      requirementCount: 2
+    }).required().label('Password')
   });
   return schema.validate(data);
 };
 
 module.exports = { User, validate };
-
-// module.exports = mongoose.model('User', userSchema)
