@@ -7,7 +7,7 @@ import SignIn from "./pages/SignIn/SignIn";
 import SearchResults from "./pages/SearchResults/SearchResults";
 import Sidebar from "./components/sidebar/Sidebar";
 import Series from "./pages/Series/Series";
-import { API_KEY } from './api/api';
+import {API_URL, API_KEY } from '../../frontend/src/api/apikey';
 import { useEffect, useState } from "react";
 import GenrePage from "./pages/GenrePage/GenrePage";
 import UserPage from "./pages/UserPage/UserPage";

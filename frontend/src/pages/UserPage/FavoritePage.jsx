@@ -3,7 +3,8 @@ import Navbar from '../../components/navbar/Navbar';
 import UserInfo from './UserInfo';
 import Film from '../../components/film/Film';
 import './favoritePage.scss';
-import { API_KEY, getFavorites } from '../../api/api';
+import { API_KEY } from '../../api/apikey';
+import { getFavorites } from '../../api/api';
 import axios from 'axios';
 
 function Favorite() {

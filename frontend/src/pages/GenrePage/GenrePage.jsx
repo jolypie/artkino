@@ -4,7 +4,7 @@ import Film from '../../components/film/Film';
 import Navbar from '../../components/navbar/Navbar';
 import Sidebar from '../../components/sidebar/Sidebar';
 import '../Films/films.css';
-import { API_KEY } from '../../api/api';
+import {API_URL, API_KEY } from '../../api/apikey';
 
 function GenrePage() {
   const { genreId } = useParams(); 

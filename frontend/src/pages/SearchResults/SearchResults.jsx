@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Film from '../../components/film/Film';
-import { API_KEY } from '../../api/api';
+import {API_URL, API_KEY } from '../../api/apikey';
 import './searchResults.scss';
 import Navbar from '../../components/navbar/Navbar';
 import Sidebar from '../../components/sidebar/Sidebar';

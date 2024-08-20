@@ -10,7 +10,8 @@ import WatchLaterIcon from '@mui/icons-material/WatchLater';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import RatingStars from '../../ratingStars/RatingStars';
 import { green, grey, orange, red } from '@mui/material/colors';
-import { API_KEY, addFavorite, removeFavorite, getFavorites } from '../../../api/api';
+import { addFavorite, removeFavorite, getFavorites } from '../../../api/api';
+import {API_URL, API_KEY } from '../../../api/apikey';
 
 function FilmTitle({ title, rating, movieId, movieData }) {  // movieData - это полный объект данных о фильме
   const [isWatched, setIsWatched] = useState(false);

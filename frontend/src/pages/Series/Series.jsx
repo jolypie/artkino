@@ -3,7 +3,7 @@ import Navbar from '../../components/navbar/Navbar';
 import Film from '../../components/film/Film';
 import Sidebar from '../../components/sidebar/Sidebar';
 import '../Films/films.css';
-import { API_KEY } from '../../api/api';
+import {API_URL, API_KEY } from '../../api/apikey';
 import { Link } from 'react-router-dom';
 import TvShow from '../../components/tv_show/TvShow';
 

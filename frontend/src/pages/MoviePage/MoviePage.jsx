@@ -4,7 +4,7 @@ import '../../components/moviePageContent/moviePageContainer.scss';
 import MoviePageContent from '../../components/moviePageContent/MoviePageContent';
 import FilmTitle from '../../components/moviePageContent/filmTitle/FilmTitle';
 import { useParams } from 'react-router-dom';
-import { API_KEY } from '../../api/api';
+import {API_URL, API_KEY } from '../../api/apikey';
 import DescriptionText from '../../components/moviePageContent/DescriptionText/DescriptionText';
 import DescInfo from '../../components/moviePageContent/DescInfo/DescInfo';
 import MovieTrailer from '../../components/moviePageContent/movieTrailer/MovieTrailer';
