@@ -1,1 +1,32 @@
-npm i @emotion/react@^11.11.4 @emotion/styled@^11.11.5 @mui/icons-material@^5.15.15 @mui/material@^5.15.15 @testing-library/jest-dom@^5.17.0 @testing-library/react@^13.4.0 @testing-library/user-event@^13.5.0 react@^18.2.0 react-awesome-stars-rating@^0.16.2 react-dom@^18.2.0 react-router-dom@^6.23.0 react-scripts@5.0.1 sass@^1.76.0 web-vitals@^2.1.4
+* *For admin* 
+
+**Dependencies for frontend**
+```
+cd frontend
+npm install @emotion/react @emotion/styled @mui/icons-material @mui/material @testing-library/jest-dom @testing-library/react @testing-library/user-event axios jwt-decode node-fetch react react-awesome-stars-rating react-dom react-router-dom react-scripts sass web-vitals react-slick slick-carousel
+```
+
+**Dependencies for backend**
+```
+cd backend
+npm install axios bcrypt cors dotenv express joi joi-password-complexity jsonwebtoken mongoose nodemon validator
+```
+
+**Run**
+
+To start the server
+```
+/cd backend 
+/npm run dev 
+```
+
+To start the client and open the page
+```
+/cd frontend
+/npm start 
+```
+
+Environment variables:
+
+
+
