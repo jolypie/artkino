@@ -30,58 +30,14 @@ export const fetchPopularMovies = async (API_KEY) => {
 };
 
 
-// client/src/services/api.js
-
-// // Добавление фильма в избранное
-// export const addFavorite = async (movie) => {
-//   // Создаем объект с данными фильма для отправки на сервер
-//   const movieData = {
-//     movieId: movie.id,                 // ID фильма из TMDb
-//     title: movie.title,                // Название фильма
-//     releaseDate: movie.release_date,   // Дата выхода фильма
-//     voteAverage: movie.vote_average,   // Средняя оценка фильма
-//     countries: movie.countries,        // Страны производства
-//     genres: movie.genres,              // Жанры
-//     director: movie.director,          // Режиссер фильма
-//     cast: movie.cast                   // Список актеров
-//   };
-
-//   const response = await fetch('http://localhost:5500/api/film/favorites', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Authorization': `Bearer ${localStorage.getItem('token')}` // Токен аутентификации
-//     },
-//     body: JSON.stringify(movieData)  // Отправляем данные о фильме на сервер
-//   });
-
-//   return response.json();
-// };
-
-// client/src/services/api.js
-
-// // Добавление фильма в избранное
-// export const addFavorite = async (movie) => {
-//   const response = await fetch('http://localhost:5500/api/film/favorites', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Authorization': `Bearer ${localStorage.getItem('token')}` // Токен аутентификации
-//     },
-//     body: JSON.stringify(movie)
-//   });
-
-//   return response.json();
-// };
-
 export const addFavorite = async (movie) => {
   const response = await fetch('http://localhost:5500/api/film/favorites', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}` // Токен аутентификации
+      'Authorization': `Bearer ${localStorage.getItem('token')}` 
     },
-    body: JSON.stringify(movie)  // Отправляем данные о фильме на сервер
+    body: JSON.stringify(movie)  
   });
 
   if (!response.ok) {
@@ -92,7 +48,6 @@ export const addFavorite = async (movie) => {
 };
 
 
-// Получение всех избранных фильмов текущего пользователя
 export const getFavorites = async () => {
   const response = await fetch('http://localhost:5500/api/film/favorites', {
     method: 'GET',
@@ -106,7 +61,7 @@ export const getFavorites = async () => {
   const getFavorites = async (userId) => {
   try {
       const response = await axios.get(`/api/favorites?userId=${userId}`);
-      return response.data; // Вернет список избранных фильмов для данного пользователя
+      return response.data; 
   } catch (error) {
       console.error('Error fetching favorites:', error);
       return [];
@@ -114,12 +69,12 @@ export const getFavorites = async () => {
 };
 };
 
-// Удаление одного фильма из избранного
+
 export const removeFavorite = async (movieId) => {
   const response = await fetch(`http://localhost:5500/api/film/favorites/${movieId}`, {
     method: 'DELETE',
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}` // Токен аутентификации
+      'Authorization': `Bearer ${localStorage.getItem('token')}` 
     }
   });
 
@@ -131,12 +86,12 @@ export const removeFavorite = async (movieId) => {
 };
 
 
-// Удаление всех избранных фильмов текущего пользователя
+
 export const removeAllFavorites = async () => {
   const response = await fetch('http://localhost:5500/api/film/favorites', {
     method: 'DELETE',
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}` // Токен аутентификации
+      'Authorization': `Bearer ${localStorage.getItem('token')}` 
     }
   });
 
