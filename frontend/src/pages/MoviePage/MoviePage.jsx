@@ -53,6 +53,7 @@ function MoviePage() {
   }
 
   const movieData = {
+    movieId: movie.id,  // ID фильма
     title: movie.title,
     release_date: movie.release_date,
     vote_average: movie.vote_average,
@@ -68,7 +69,7 @@ function MoviePage() {
       <Navbar />
       <div className='page-container'>
         <div className="movie-container">
-          <FilmTitle title={movieData.title} rating={movieData.vote_average} />
+          <FilmTitle title={movieData.title} rating={movieData.vote_average} movieId={id} movieData={movieData} />
           <div className='moviePageContent'>
             <DescriptionText description={movieData.description} />
             <DescInfo movie={movieData} />

@@ -1,0 +1,19 @@
+.filmsInPlaylist {
+    margin-top: 20px;
+  }
+  
+  .films-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); // Установить количество столбцов в зависимости от ширины контейнера
+    gap: 20px; // Расстояние между элементами сетки
+    padding: 20px;
+  }
+  
+  .film-item {
+    transition: transform 0.3s ease;
+  }
+  
+  .film-item:hover {
+    transform: translateY(-10px);
+  }
+  

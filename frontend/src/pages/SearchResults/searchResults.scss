@@ -6,7 +6,7 @@
   display: inline-block;
   background-color:#282624;
   vertical-align: top;
-  height: 300vh;
+  height: 100%;
   width: calc(100% - 260px);
 
   border-top-left-radius: 10px;
@@ -40,20 +40,15 @@
 }
 
 /* Responsive adjustments */
+@media (max-width: 1500px) {
+  .gridFilms {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 @media (max-width: 1200px) {
   .gridFilms {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 900px) {
-  .gridFilms {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .gridFilms {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}

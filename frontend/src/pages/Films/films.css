@@ -2,26 +2,9 @@
   --color-green: #7EF5B1;
 }
 
-.page-container {
-  display: inline-block;
-  background-color:#282624;
-  vertical-align: top;
-  height: 300vh;
-  width: calc(100% - 260px);
-
-  border-top-left-radius: 10px;
-}
-
-.rowFilms {
-  width: 1000px;
-  margin-top: 2.5rem;
-  display: flex;
-  justify-content: space-evenly;
-}
-
 .page {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   flex-direction: row;
 }
 
@@ -29,30 +12,30 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .gridFilms {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 0.1rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr), repeat(4, 1fr));
   width: 100%;
-  padding: 1rem;
+  padding: 10px;
 }
 
 @media (max-width: 1200px) {
   .gridFilms {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* 3 фильма в строке для экранов шириной до 1200px */
   }
 }
 
 @media (max-width: 900px) {
   .gridFilms {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* 2 фильма в строке для экранов шириной до 900px */
   }
 }
 
 @media (max-width: 600px) {
   .gridFilms {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 2fr; /* 1 фильм в строке для экранов шириной до 600px */
   }
 }

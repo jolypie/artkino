@@ -46,15 +46,6 @@ function TvShow({ tv, getGenreNames }) {
               <StarBorderOutlinedIcon sx={{ color: orange[500], fontSize: 22 }} />
               <p className="rating">{tv.vote_average.toFixed(1)}</p>
               <p className="year">{new Date(tv.first_air_date).getFullYear()}</p>
-              <span onClick={handleIsFavoriteClick} className='fav-icon'>
-                {isFavorite ? <FavoriteIcon sx={{ color: red[500], fontSize: 20 }} /> : <FavoriteBorderIcon sx={{ color: grey[500], fontSize: 20 }} />}
-              </span>
-              <span onClick={handleIsWatchedClick} className='watched-icon'>
-                {isWatched ? <VisibilityIcon sx={{ color: green[500], fontSize: 20 }} /> : <VisibilityOutlinedIcon sx={{ color: grey[500], fontSize: 20 }} />}
-              </span>
-              <span onClick={handleIsWatchLaterClick} className='watch-later-icon'>
-                {isWatchLater ? <WatchLaterIcon sx={{ color: grey[500], fontSize: 20 }} /> : <AccessTimeIcon sx={{ color: grey[500], fontSize: 20 }} />}
-              </span>
             </div>
           </div>
             

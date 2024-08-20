@@ -11,9 +11,12 @@ import { API_KEY } from './api/api';
 import { useEffect, useState } from "react";
 import GenrePage from "./pages/GenrePage/GenrePage";
 import UserPage from "./pages/UserPage/UserPage";
-// import SeriesPage from "./pages/SeriesPage/SeriesPage";
+import Favorite from "./pages/UserPage/FavoritePage";
 
 function App() {
+//todo: страницы фильмов, убрать лайки и тд на главной, сделать поиск по популярности, добавить кэш поиска к юзеру, добавить плейлисты
+
+
   const [genres, setGenres] = useState([]);
 
   const getGenres = async () => {
@@ -44,6 +47,7 @@ function App() {
         <Route path='/search' element={<SearchResults />}/>
         <Route path="/film/:id" element={<MoviePage />} />
         <Route path="/profile" element={<UserPage />} />
+        <Route path="/favorite" element={<Favorite />} />
       </Routes>
     </div>
   );

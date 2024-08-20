@@ -18,7 +18,8 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Favorite' }]
 });
 
 userSchema.methods.generateAuthToken = function() {

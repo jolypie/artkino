@@ -10,9 +10,9 @@ import WatchLaterIcon from '@mui/icons-material/WatchLater';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import RatingStars from '../../ratingStars/RatingStars';
 import { green, grey, orange, red } from '@mui/material/colors';
-import { API_KEY } from '../../../api/api';
+import { API_KEY, addFavorite, removeFavorite, getFavorites } from '../../../api/api';
 
-function FilmTitle({ title, rating }) {
+function FilmTitle({ title, rating, movieId, movieData }) {  // movieData - это полный объект данных о фильме
   const [isWatched, setIsWatched] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [isWatchLater, setIsWatchLater] = useState(false);
@@ -20,6 +20,7 @@ function FilmTitle({ title, rating }) {
 
   useEffect(() => {
     fetchPoster();
+    checkIfFavorite();
   }, [title]);
 
   const fetchPoster = async () => {
@@ -35,12 +36,35 @@ function FilmTitle({ title, rating }) {
     }
   };
 
-  const handleIsWatchedClick = () => {
-    setIsWatched(!isWatched);
+  const checkIfFavorite = async () => {
+    try {
+      const favorites = await getFavorites();
+      const isFav = favorites.some(fav => fav.movieId === movieId);
+      setIsFavorite(isFav);
+    } catch (error) {
+      console.error('Error checking favorites:', error);
+    }
   };
 
-  const handleIsFavoriteClick = () => {
-    setIsFavorite(!isFavorite);
+  const handleIsFavoriteClick = async () => {
+    try {
+      if (isFavorite) {
+        await removeFavorite(movieId);
+        setIsFavorite(false);
+      } else {
+        await addFavorite(movieData);
+        setIsFavorite(true);
+      }
+    } catch (error) {
+      console.error('Error handling favorite:', error.message);
+    }
+  };
+  
+  
+
+
+  const handleIsWatchedClick = () => {
+    setIsWatched(!isWatched);
   };
 
   const handleIsWatchLaterClick = () => {

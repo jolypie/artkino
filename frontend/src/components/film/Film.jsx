@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
 import './film.scss';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
-import { green, grey, orange, red } from '@mui/material/colors';
-import PlayCircleIcon from '@mui/icons-material/PlayCircle';
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import WatchLaterIcon from '@mui/icons-material/WatchLater';
+import { orange } from '@mui/material/colors';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import { Link } from 'react-router-dom';
 
@@ -28,7 +21,16 @@ function Film({ movie, getGenreNames }) {
   const handleIsWatchLaterClick = () => {
     setIsWatchLater(!isWatchLater);
   };
+  const genreNames =
+    movie.genres && Array.isArray(movie.genres)
+      ? movie.genres.map((genre) => genre.name).join(', ')
+      : 'No genres available';
 
+  const genresText = 
+    movie.genre_ids && getGenreNames 
+      ? getGenreNames(movie.genre_ids)  
+      : genreNames; 
+  
   return (
     <div className='film-item'>
       <Link to={`/film/${movie.id}`} className='film-link'>
@@ -40,21 +42,13 @@ function Film({ movie, getGenreNames }) {
               <div className="desc-film-cont">
             <div className='title-genres'>
               <p className='title'>{movie.title}</p>
-              <p className='genres'>{getGenreNames(movie.genre_ids)}</p>
+              
+              <p className="genres">{genresText}</p>
             </div>
             <div className="info">
               <StarBorderOutlinedIcon sx={{ color: orange[500], fontSize: 22 }} />
               <p className="rating">{movie.vote_average.toFixed(1)}</p>
               <p className="year">{new Date(movie.release_date).getFullYear()}</p>
-              <span onClick={handleIsFavoriteClick} className='fav-icon'>
-                {isFavorite ? <FavoriteIcon sx={{ color: red[500], fontSize: 20 }} /> : <FavoriteBorderIcon sx={{ color: grey[500], fontSize: 20 }} />}
-              </span>
-              <span onClick={handleIsWatchedClick} className='watched-icon'>
-                {isWatched ? <VisibilityIcon sx={{ color: green[500], fontSize: 20 }} /> : <VisibilityOutlinedIcon sx={{ color: grey[500], fontSize: 20 }} />}
-              </span>
-              <span onClick={handleIsWatchLaterClick} className='watch-later-icon'>
-                {isWatchLater ? <WatchLaterIcon sx={{ color: grey[500], fontSize: 20 }} /> : <AccessTimeIcon sx={{ color: grey[500], fontSize: 20 }} />}
-              </span>
             </div>
           </div>
             

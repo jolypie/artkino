@@ -7,8 +7,11 @@ const authenticateToken = (req, res, next) => {
     if (token == null) return res.sendStatus(401);
 
     jwt.verify(token, process.env.JWTKEY, (err, user) => {
-        if (err) return res.sendStatus(403); 
-        req.user = user; 
+        if (err) {
+            console.error('Token verification failed:', err);  // Логи для отладки
+            return res.sendStatus(403);
+        }
+        req.user = user;
         next();
     });
 };
