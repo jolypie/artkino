@@ -1,4 +1,4 @@
-
+* *For admin* 
 
 **Dependencies for frontend**
 ```
@@ -16,12 +16,17 @@ npm install axios bcrypt cors dotenv express joi joi-password-complexity jsonweb
 
 To start the server
 ```
-cd backend npm run dev 
+/cd backend 
+/npm run dev 
 ```
 
 To start the client and open the page
 ```
-cd frontend npm start 
+/cd frontend
+/npm start 
 ```
+
+Environment variables:
+
 
 
