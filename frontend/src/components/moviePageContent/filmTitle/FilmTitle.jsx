@@ -11,9 +11,11 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import RatingStars from '../../ratingStars/RatingStars';
 import { green, grey, orange, red } from '@mui/material/colors';
 import { addFavorite, removeFavorite, getFavorites } from '../../../api/api';
-import {API_URL, API_KEY } from '../../../api/apikey';
+import { addWatched, removeWatched, getWatched } from '../../../api/api';
+import { addWatchLater, removeWatchLater, getWatchLater } from '../../../api/api';
+import { API_URL, API_KEY } from '../../../api/apikey';
 
-function FilmTitle({ title, rating, movieId, movieData }) {  // movieData - это полный объект данных о фильме
+function FilmTitle({ title, rating, movieId, movieData }) { 
   const [isWatched, setIsWatched] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [isWatchLater, setIsWatchLater] = useState(false);
@@ -22,6 +24,8 @@ function FilmTitle({ title, rating, movieId, movieData }) {  // movieData - эт
   useEffect(() => {
     fetchPoster();
     checkIfFavorite();
+    checkIfWatched();
+    checkIfWatchLater();
   }, [title]);
 
   const fetchPoster = async () => {
@@ -47,6 +51,26 @@ function FilmTitle({ title, rating, movieId, movieData }) {  // movieData - эт
     }
   };
 
+  const checkIfWatched = async () => {
+    try {
+      const watched = await getWatched();
+      const isWatched = watched.some(item => item.movieId === movieId);
+      setIsWatched(isWatched);
+    } catch (error) {
+      console.error('Error checking watched list:', error);
+    }
+  };
+
+  const checkIfWatchLater = async () => {
+    try {
+      const watchLater = await getWatchLater();
+      const isWatchLater = watchLater.some(item => item.movieId === movieId);
+      setIsWatchLater(isWatchLater);
+    } catch (error) {
+      console.error('Error checking watch later list:', error);
+    }
+  };
+
   const handleIsFavoriteClick = async () => {
     try {
       if (isFavorite) {
@@ -60,16 +84,33 @@ function FilmTitle({ title, rating, movieId, movieData }) {  // movieData - эт
       console.error('Error handling favorite:', error.message);
     }
   };
-  
-  
 
-
-  const handleIsWatchedClick = () => {
-    setIsWatched(!isWatched);
+  const handleIsWatchedClick = async () => {
+    try {
+      if (isWatched) {
+        await removeWatched(movieId);
+        setIsWatched(false);
+      } else {
+        await addWatched(movieData);
+        setIsWatched(true);
+      }
+    } catch (error) {
+      console.error('Error handling watched list:', error.message);
+    }
   };
 
-  const handleIsWatchLaterClick = () => {
-    setIsWatchLater(!isWatchLater);
+  const handleIsWatchLaterClick = async () => {
+    try {
+      if (isWatchLater) {
+        await removeWatchLater(movieId);
+        setIsWatchLater(false);
+      } else {
+        await addWatchLater(movieData);
+        setIsWatchLater(true);
+      }
+    } catch (error) {
+      console.error('Error handling watch later list:', error.message);
+    }
   };
 
   return (

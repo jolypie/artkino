@@ -4,20 +4,23 @@ import Film from '../../components/film/Film';
 import Navbar from '../../components/navbar/Navbar';
 import Sidebar from '../../components/sidebar/Sidebar';
 import '../Films/films.css';
-import {API_URL, API_KEY } from '../../api/apikey';
+import { API_URL, API_KEY } from '../../api/apikey';
 
 function GenrePage() {
-  const { genreId } = useParams(); 
+  const { genreId } = useParams();
   const [movieList, setMovieList] = useState([]);
   const [genreList, setGenreList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  const getMoviesByGenre = async (genreId) => {
+  const getMoviesByGenre = async (genreId, page = 1) => {
     try {
-      const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=${genreId}`);
+      const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${genreId}`);
       const json = await response.json();
       setMovieList(json.results);
+      setTotalPages(json.total_pages);
       setLoading(false);
     } catch (error) {
       setError(error);
@@ -37,10 +40,10 @@ function GenrePage() {
 
   useEffect(() => {
     if (genreId) {
-      getMoviesByGenre(genreId); 
+      getMoviesByGenre(genreId, currentPage);
     }
     getGenres();
-  }, [genreId]);
+  }, [genreId, currentPage]);
 
   const getGenreNames = (genreIds) => {
     return genreIds.map(id => {
@@ -63,13 +66,38 @@ function GenrePage() {
             {loading ? (
               <p>Loading movies...</p>
             ) : (
-              <div className="gridFilms">
-                {movieList.map((movie) => (
-                  <Link to={`/film/${movie.id}`} key={movie.id}>
-                    <Film movie={movie} getGenreNames={getGenreNames} />
-                  </Link>
-                ))}
-              </div>
+              <>
+                <div className="gridFilms">
+                  {movieList.map((movie) => (
+                    <Link to={`/film/${movie.id}`} key={movie.id}>
+                      <Film movie={movie} getGenreNames={getGenreNames} />
+                    </Link>
+                  ))}
+                </div>
+                <div className='pagination'>
+                  <button className='buttunPages'
+                    onClick={() => {
+                      if (currentPage > 1) {
+                        setCurrentPage(currentPage - 1);
+                      }
+                    }}
+                    disabled={currentPage === 1}
+                  >
+                    Previous
+                  </button>
+                  <span className='pageCounter'>Page {currentPage} of {totalPages}</span>
+                  <button className='buttunPages'
+                    onClick={() => {
+                      if (currentPage < totalPages) {
+                        setCurrentPage(currentPage + 1);
+                      }
+                    }}
+                    disabled={currentPage === totalPages}
+                  >
+                    Next
+                  </button>
+                </div>
+              </>
             )}
           </div>
         </div>

@@ -4,11 +4,11 @@ import UserInfo from './UserInfo';
 import Film from '../../components/film/Film';
 import './favoritePage.scss';
 import { API_KEY } from '../../api/apikey';
-import { getFavorites } from '../../api/api';
+import { getWatched } from '../../api/api'; 
 import axios from 'axios';
 
-function Favorite() {
-    const [favorites, setFavorites] = useState([]);
+function WatchedPage() {
+    const [watchedMovies, setWatchedMovies] = useState([]);
     const [movieDetails, setMovieDetails] = useState([]);
 
     const fetchMovieDetails = async (movieId) => {
@@ -27,11 +27,10 @@ function Favorite() {
     };
 
     useEffect(() => {
-        const fetchFavorites = async () => {
+        const fetchWatchedMovies = async () => {
             try {
-                const response = await getFavorites();
-                setFavorites(response);
-
+                const response = await getWatched();
+                setWatchedMovies(response);
 
                 const details = await Promise.all(
                     response.map(async (movie) => {
@@ -42,14 +41,12 @@ function Favorite() {
 
                 setMovieDetails(details);
             } catch (error) {
-                console.error('Error fetching favorites:', error);
+                console.error('Error fetching watched movies:', error);
             }
         };
 
-        fetchFavorites();
+        fetchWatchedMovies();
     }, []);
-
-
 
     return (
         <div>
@@ -64,7 +61,7 @@ function Favorite() {
                             </div>
                             <div className='filmsInPlaylist'>
                                 {movieDetails.length === 0 ? (
-                                    <p className='favNot'>You haven't added any movies to your favorites yet.</p>
+                                    <p className='favNot'>You haven't added any Watched movies yet.</p>
                                 ) : (
                                     <div className='films-grid'>
                                         {movieDetails.map((movie) => (
@@ -81,4 +78,5 @@ function Favorite() {
     );
 }
 
-export default Favorite;
+export default WatchedPage;
+

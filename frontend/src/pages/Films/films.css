@@ -24,18 +24,49 @@
 
 @media (max-width: 1200px) {
   .gridFilms {
-    grid-template-columns: repeat(3, 1fr); /* 3 фильма в строке для экранов шириной до 1200px */
+    grid-template-columns: repeat(3, 1fr); 
   }
 }
 
 @media (max-width: 900px) {
   .gridFilms {
-    grid-template-columns: repeat(3, 1fr); /* 2 фильма в строке для экранов шириной до 900px */
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 600px) {
   .gridFilms {
-    grid-template-columns: 2fr; /* 1 фильм в строке для экранов шириной до 600px */
+    grid-template-columns: 2fr;
   }
+}
+
+.pagination {
+  display: flex;
+  padding-bottom: 4rem;
+  padding-top: 1rem;
+}
+
+.pageCounter {
+  color: white;
+}
+
+.buttunPages {
+  margin-left: 2rem;
+  margin-right: 2rem;
+
+  font-size: 1rem;
+  color: white;
+  background-color: rgb(67, 82, 82);
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.buttunPages:hover {
+  background-color: rgb(84, 102, 102);
+}
+
+.buttunPages:active {
+  background-color: rgb(59, 71, 71);
 }

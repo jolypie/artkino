@@ -90,7 +90,7 @@ function Navbar() {
                 <div className='userMenu'>
                   <ul>
                     <li><a href="/profile">My Profile</a></li>
-                    <li><a href="/">Settings</a></li>
+                    <li><a href="/profile">Settings</a></li>
                     <li><a onClick={handleLogout}>Log Out</a></li>
                   </ul>
                 </div>

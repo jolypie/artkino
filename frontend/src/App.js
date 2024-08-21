@@ -12,9 +12,11 @@ import { useEffect, useState } from "react";
 import GenrePage from "./pages/GenrePage/GenrePage";
 import UserPage from "./pages/UserPage/UserPage";
 import Favorite from "./pages/UserPage/FavoritePage";
+import WatchedPage from "./pages/UserPage/WatchedPage";
+import WatchLaterPage from "./pages/UserPage/WatchLaterPage";
+import TopPage from "./pages/Top250Page/TopPage";
 
 function App() {
-//todo: страницы фильмов, убрать лайки и тд на главной, сделать поиск по популярности, добавить кэш поиска к юзеру, добавить плейлисты
 
 
   const [genres, setGenres] = useState([]);
@@ -48,6 +50,9 @@ function App() {
         <Route path="/film/:id" element={<MoviePage />} />
         <Route path="/profile" element={<UserPage />} />
         <Route path="/favorite" element={<Favorite />} />
+        <Route path="/watched" element={<WatchedPage />} />
+        <Route path="/watchlater" element={<WatchLaterPage />} />
+        <Route path="/top250" element={<TopPage />} />
       </Routes>
     </div>
   );

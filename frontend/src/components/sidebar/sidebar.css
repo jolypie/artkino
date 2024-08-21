@@ -101,7 +101,7 @@
 
 .sidebar-container .genres ul li .genre-link,
 .sidebar-container .categories ul li .category-icon-cont .genres {
-  display: block; /* Делаем весь блок ссылки кликабельным */
+  display: block;
   width: 100%;
   height: 100%;
   padding: 5px;

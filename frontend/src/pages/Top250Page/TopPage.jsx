@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar/Navbar';
 import Film from '../../components/film/Film';
 import Sidebar from '../../components/sidebar/Sidebar';
-import './films.css';
+import '../Films/films.css';
 import { API_URL, API_KEY } from '../../api/apikey';
 import { Link } from 'react-router-dom';
 
-function Films() {
+function TopPage() {
   const [movieList, setMovieList] = useState([]);
   const [genreList, setGenreList] = useState([]);
   const [error, setError] = useState(null);
@@ -15,10 +15,10 @@ function Films() {
 
   const getMovies = async (page = 1) => {
     try {
-      const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&page=${page}&sort_by=vote_count.desc&watch_region=US`);
+      const response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}&region=US`);
       const json = await response.json();
       setMovieList(json.results);
-      setTotalPages(json.total_pages);
+      setTotalPages(Math.min(13, json.total_pages)); 
     } catch (error) {
       setError(error);
     }
@@ -94,4 +94,4 @@ function Films() {
   );
 }
 
-export default Films;
+export default TopPage;

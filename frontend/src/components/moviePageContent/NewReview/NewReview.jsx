@@ -37,9 +37,9 @@ function NewReview() {
                 {firstLetter}
               </Avatar>
               <p className='userName'>{username}</p> 
-        <div className="rating_stars">
+        {/* <div className="rating_stars">
           <RatingStars />
-        </div>
+        </div> */}
       </div>
         <textarea
           id="review-input"

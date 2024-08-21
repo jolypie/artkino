@@ -30,6 +30,8 @@ export const fetchPopularMovies = async (API_KEY) => {
 };
 
 
+
+// favorite post
 export const addFavorite = async (movie) => {
   const response = await fetch('http://localhost:5500/api/film/favorites', {
     method: 'POST',
@@ -47,7 +49,7 @@ export const addFavorite = async (movie) => {
   return response.json();
 };
 
-
+// favorite get
 export const getFavorites = async () => {
   const response = await fetch('http://localhost:5500/api/film/favorites', {
     method: 'GET',
@@ -69,7 +71,7 @@ export const getFavorites = async () => {
 };
 };
 
-
+// favorite delete:id
 export const removeFavorite = async (movieId) => {
   const response = await fetch(`http://localhost:5500/api/film/favorites/${movieId}`, {
     method: 'DELETE',
@@ -86,7 +88,7 @@ export const removeFavorite = async (movieId) => {
 };
 
 
-
+// favorite delete
 export const removeAllFavorites = async () => {
   const response = await fetch('http://localhost:5500/api/film/favorites', {
     method: 'DELETE',
@@ -97,6 +99,157 @@ export const removeAllFavorites = async () => {
 
   return response.json();
 };
+
+
+
+//watched post
+
+export const addWatched = async (movie) => {
+  const response = await fetch('http://localhost:5500/api/film/watched', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    },
+    body: JSON.stringify(movie)
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to add watched movie');
+  }
+
+  return response.json();
+};
+
+
+//watched get
+
+export const getWatched = async () => {
+  const response = await fetch('http://localhost:5500/api/film/watched', {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch watched movies');
+  }
+
+  return response.json();
+};
+
+
+//watched delete:id
+
+export const removeWatched = async (movieId) => {
+  const response = await fetch(`http://localhost:5500/api/film/watched/${movieId}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to remove watched movie');
+  }
+
+  return response.json();
+};
+
+
+//watched delete all
+
+export const removeAllWatched = async () => {
+  const response = await fetch('http://localhost:5500/api/film/watched', {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to remove all watched movies');
+  }
+
+  return response.json();
+};
+
+
+//watch later post
+
+export const addWatchLater = async (movie) => {
+  const response = await fetch('http://localhost:5500/api/film/watchLater', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    },
+    body: JSON.stringify(movie)
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to add watch later movie');
+  }
+
+  return response.json();
+};
+
+
+//watch later get
+
+export const getWatchLater = async () => {
+  const response = await fetch('http://localhost:5500/api/film/watchLater', {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch watch later movies');
+  }
+
+  return response.json();
+};
+
+
+//watch later delete:id
+
+export const removeWatchLater = async (movieId) => {
+  const response = await fetch(`http://localhost:5500/api/film/watchLater/${movieId}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to remove watch later movie');
+  }
+
+  return response.json();
+};
+
+
+//watch later delete all
+
+export const removeAllWatchLater = async () => {
+  const response = await fetch('http://localhost:5500/api/film/watchLater', {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to remove all watch later movies');
+  }
+
+  return response.json();
+};
+
+
 
 
 
@@ -117,4 +270,8 @@ const getMovieDetails = async (movieId) => {
 };
 
 export { getMovieDetails };
+
+
+
+
 

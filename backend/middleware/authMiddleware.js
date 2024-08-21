@@ -8,7 +8,7 @@ const authenticateToken = (req, res, next) => {
 
     jwt.verify(token, process.env.JWTKEY, (err, user) => {
         if (err) {
-            console.error('Token verification failed:', err);  // Логи для отладки
+            console.error('Token verification failed:', err); 
             return res.sendStatus(403);
         }
         req.user = user;

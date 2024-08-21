@@ -2,13 +2,6 @@ import React, { useState } from 'react';
 import '../film/film.scss';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import { green, grey, orange, red } from '@mui/material/colors';
-import PlayCircleIcon from '@mui/icons-material/PlayCircle';
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import WatchLaterIcon from '@mui/icons-material/WatchLater';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import { Link } from 'react-router-dom';
 

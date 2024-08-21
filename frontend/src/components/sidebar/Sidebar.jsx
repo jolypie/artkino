@@ -25,7 +25,7 @@ function Sidebar() {
   const categories = [
     { text: 'Films', icon: <TheatersOutlinedIcon sx={{ fontSize: 28 }} className='icon' />, link: '/films' },
     { text: 'TV-Shows', icon: <SlideshowIcon sx={{ fontSize: 28 }} className='icon' />, link: '/series' },
-    { text: 'Top 250 Films', icon: <LocalActivityOutlinedIcon sx={{ fontSize: 28 }} className='icon' />, link: '/top-250' },
+    { text: 'Top 250 Films', icon: <LocalActivityOutlinedIcon sx={{ fontSize: 28 }} className='icon' />, link: '/top250' },
   ];
 
   return (

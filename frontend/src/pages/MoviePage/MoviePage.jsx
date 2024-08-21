@@ -53,7 +53,7 @@ function MoviePage() {
   }
 
   const movieData = {
-    movieId: movie.id,  // ID фильма
+    movieId: movie.id,  
     title: movie.title,
     release_date: movie.release_date,
     vote_average: movie.vote_average,

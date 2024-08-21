@@ -60,7 +60,4 @@ function SearchBar() {
   )
 }
 
-// TODO
-// Add arrows for sorting
-
 export default SearchBar
