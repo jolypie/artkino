@@ -1,0 +1,6 @@
+[build]
+command = "npm install && npm run dev"
+root = "./backend"
+
+[deploy]
+command = "npm run start"
