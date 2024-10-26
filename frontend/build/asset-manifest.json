@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f1502f3f.css",
+    "main.js": "/static/js/main.32e32bf6.js",
+    "static/media/evil_dead_rise.jpg": "/static/media/evil_dead_rise.5f8fcc6f726599cdbd53.jpg",
+    "static/media/indiana_jones_5.jpg": "/static/media/indiana_jones_5.038cff86cd8ef838a04f.jpg",
+    "static/media/wonka.jpg": "/static/media/wonka.6dc21918badb67fee37e.jpg",
+    "static/media/barbie.jpg": "/static/media/barbie.417ae040650a888b6632.jpg",
+    "static/media/films_color.jpg": "/static/media/films_color.69080f2eebc3e0603067.jpg",
+    "static/media/terrifier.jpg": "/static/media/terrifier.3e1c2f27053a006856e0.jpg",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/index.html",
+    "main.f1502f3f.css.map": "/static/css/main.f1502f3f.css.map",
+    "main.32e32bf6.js.map": "/static/js/main.32e32bf6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f1502f3f.css",
+    "static/js/main.32e32bf6.js"
+  ]
+}
