@@ -1,5 +1,5 @@
 [build]
-  command = "npm install --prefix backend && npm install --prefix frontend"
+command = "npm install --prefix backend"
 
-[deploy]
-  command = "npm start --prefix backend"
+[start]
+command = "npm run dev --prefix backend"
