@@ -1,5 +1,5 @@
 [build]
-command = "npm install --prefix backend"
+command = "cd backend && npm install"
 
 [start]
-command = "npm run dev --prefix backend"
+command = "cd backend && npm run dev"
