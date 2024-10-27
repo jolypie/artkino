@@ -1,6 +1,7 @@
 {
-  "dependencies": {
-    "react-slick": "^0.30.2",
-    "slick-carousel": "^1.8.1"
+  "name": "artkino",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npm start --prefix backend && npm start --prefix frontend"
   }
 }
