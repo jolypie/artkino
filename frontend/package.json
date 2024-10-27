@@ -360,8 +360,8 @@
 
 
 
+"start": "serve -s build",
 
- "start": "npm start",
   
 
 
