@@ -1,4 +1,5 @@
-require('dotenv').config()
+require('dotenv').config({ path: './backend/.env' });
+
 
 const express = require('express')
 const app = express()
@@ -43,5 +44,9 @@ mongoose.connect(process.env.MONGO_URI)
     next()
   })
   
-
+  if (!process.env.MONGO_URI || !process.env.PORT) {
+    console.error('MONGO_URI или PORT не заданы в .env');
+    process.exit(1);
+  }
+  
   

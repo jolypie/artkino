@@ -1,6 +1,5 @@
 [build]
 command = "cd backend && npm install && cd ../frontend && npm install"
 
-
 [start]
-command = "npm start --prefix backend && npm start --prefix frontend"
+command = "npm start --prefix backend & npm start --prefix frontend"
