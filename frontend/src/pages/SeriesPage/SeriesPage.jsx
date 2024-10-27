@@ -5,7 +5,7 @@ import SeriesPageContent from '../../components/seriesPageContent/SeriesPageCont
 import SeriesTitle from '../../components/seriesPageContent/SeriesTitle';
 
 import { useParams } from 'react-router-dom'; 
-import { API_KEY } from '../../api/api'; 
+import { API_KEY } from '../../api/apikey'; 
 import DescriptionText from '../../components/seriesPageContent/DescriptionText/DescriptionText';
 import DescInfo from '../../components/seriesPageContent/DescInfo/DescInfo';
 import SeriesTrailer from '../../components/seriesTrailer/SeriesTrailer';
