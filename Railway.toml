@@ -2,4 +2,4 @@
 command = "npm install --prefix backend && npm install --prefix frontend"
 
 [start]
-command = "npm start --prefix frontend && npm run dev --prefix backend"
+command = "npm start --prefix frontend && npm start --prefix backend"
