@@ -376,7 +376,7 @@
 
 
 
- "build": "npm install",
+"build": "react-scripts build",
   
 
 
