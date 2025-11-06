@@ -1,3 +1,5 @@
+<img width="2876" height="1546" alt="image" src="https://github.com/user-attachments/assets/ce59047e-cc6e-402d-bf2f-202658844d2f" />
+
 Uživatelská a administrátorská příručka:
 
 ## Technologies
